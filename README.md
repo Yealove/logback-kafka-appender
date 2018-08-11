@@ -1,6 +1,6 @@
 # logback-kafka-appender
 
-## usage
+## 用法
 
 logback.xml:
 ```xml
@@ -19,6 +19,9 @@ logback.xml:
 ```
 
 
-kafka producer配置中不用配置key.serializer和value.serializer，固定为：
+## 说明
+producerConfig不用配置`key.serializer`和`value.serializer`，固定为：
+```properties
 key.serializer=org.apache.kafka.common.serialization.StringSerializer
 value.serializer=org.apache.kafka.common.serialization.ByteArraySerializer
+```
