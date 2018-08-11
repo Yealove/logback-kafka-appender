@@ -18,8 +18,7 @@ logback.xml:
 </logger>
 ```
 
+
 kafka producer配置中不用配置key.serializer和value.serializer，固定为：
-
 key.serializer=org.apache.kafka.common.serialization.StringSerializer
-
 value.serializer=org.apache.kafka.common.serialization.ByteArraySerializer
