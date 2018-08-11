@@ -10,10 +10,16 @@ logback.xml:
         <pattern>%date{yyyy-MM-dd HH:mm:ssZ}%thread%level%logger%message%exception</pattern>
     </encoder>
     <topic>logs</topic>
-    <kafkaProperty>log-kafka.properties</kafkaProperty>
+    <producerConfig>producer.properties</producerConfig>
 </appender>
 
 <logger name="com.github.yealove" level="DEBUG" additivity="false">
     <appender-ref ref="KAFKA"/>
 </logger>
 ```
+
+kafka producer配置中不用配置key.serializer和value.serializer，固定为：
+
+key.serializer=org.apache.kafka.common.serialization.StringSerializer
+
+value.serializer=org.apache.kafka.common.serialization.ByteArraySerializer

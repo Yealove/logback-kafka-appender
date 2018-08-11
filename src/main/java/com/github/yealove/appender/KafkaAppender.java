@@ -19,7 +19,7 @@ public class KafkaAppender extends AppenderBase<ILoggingEvent> {
 
     private Encoder<ILoggingEvent> encoder;
 
-    private String kafkaProperty;
+    private String producerConfig;
 
     private String topic;
 
@@ -54,9 +54,9 @@ public class KafkaAppender extends AppenderBase<ILoggingEvent> {
 
     public void init() {
         Properties props = new Properties();
-        if (kafkaProperty != null) {
+        if (producerConfig != null) {
             try {
-                props.load(this.getClass().getClassLoader().getResourceAsStream(kafkaProperty));
+                props.load(this.getClass().getClassLoader().getResourceAsStream(producerConfig));
             } catch (IOException e) {
                 addError("Load properties failed", e);
             }
@@ -90,11 +90,11 @@ public class KafkaAppender extends AppenderBase<ILoggingEvent> {
         this.errorInterval = errorInterval;
     }
 
-    public String getKafkaProperty() {
-        return kafkaProperty;
+    public String getProducerConfig() {
+        return producerConfig;
     }
 
-    public void setKafkaProperty(String kafkaProperty) {
-        this.kafkaProperty = kafkaProperty;
+    public void setProducerConfig(String producerConfig) {
+        this.producerConfig = producerConfig;
     }
 }
